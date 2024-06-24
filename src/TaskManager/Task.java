@@ -1,13 +1,10 @@
 package TaskManager;
 
 public class Task {
-    String description;
-    Boolean completed;
-
-    public Task(String description, Boolean completed) {
-        this.description = description;
-        this.completed = completed;
-    }
+    public String description;
+    public Boolean completed;
+    public Task nextTask;
+    public String userName;
 
     public String getDescription() {
         return description;
@@ -25,4 +22,19 @@ public class Task {
         this.completed = completed;
     }
 
+    public Task getNextTask() {
+        return nextTask;
+    }
+
+    public void setNextTask(Task nextTask) {
+        this.nextTask = nextTask;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }
