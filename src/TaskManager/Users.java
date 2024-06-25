@@ -2,19 +2,18 @@ package TaskManager;
 import java.util.Arrays;
 
 public class Users {
-    String[] userArr = null;
-    String userName;
+    User[] userArr = null;
+
 
     public Users(int sizeOfArray) {
-        userArr = new String[sizeOfArray];
-        Arrays.fill(userArr, null);
+        userArr = new User[sizeOfArray];
     }
 
     public void insert(int location, String userName) {
         try {
             if (userArr[location] == null) {
                     if (isUniqueName(userName)) {
-                        userArr[location] = userName;
+                        userArr[location] = new User(userName);
                         System.out.println("User successfully inserted");
                     } else {
                         System.out.println("Username already exists");
@@ -27,8 +26,9 @@ public class Users {
         }
     }
 
+
     private boolean isUniqueName(String userName) {
-        for (String user : userArr) {
+        for (User user : userArr) {
             if (userName.equals(user)) {
                 return false;
             }
@@ -38,16 +38,25 @@ public class Users {
 
     public int searchUsername(String userName) {
         for(int i = 0; i < userArr.length; i ++) {
-            if(userName.equals(userArr[i])) {
+            if(userName.equals(userArr[i].getUserName())) {
                 return i;
             }
         }
         return -1;
     }
 
+    public TaskList getUserTaskList(String userName) {
+        int index = searchUsername(userName);
+        if (index != -1) {
+            return userArr[index].getTaskList();
+        }
+        System.out.println("User not found: " + userName);
+        return null;
+    }
+
     public void traverseUsers() {
-        for (String user : userArr) {
-            System.out.println(user != null ? user : "Empty");
+        for (User user : userArr) {
+            System.out.println(user != null ? user.getUserName() : "Empty");
         }
     }
 
