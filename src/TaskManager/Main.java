@@ -6,27 +6,27 @@ public class Main {
         users.insert(0, "User1");
         users.insert(1, "User2");
         users.insert(2, "User3");
+
         users.traverseUsers();
 
-        TaskList taskList = new TaskList();
-        taskList.createToDoList("make appointment for car", true, "User1", users);
-        taskList.insertNewTask("buy milk", false, 1, "User2", users);
-        taskList.insertNewTask("call bank", false, 2, "User2", users);
-        taskList.insertNewTask("call school", true, 3, "User2", users);
-        taskList.insertNewTask("go to the dump", false, 4, "User2", users);
-        taskList.insertNewTask("visit dentist", false, 5, "User2", users);
+        TaskList user1TaskList = users.getUserTaskList("User1");
 
-        taskList.changeTaskStatus("Buy Milk", true);
-
-        taskList.traverseToDoList();
-        TaskList user2List = taskList.searchTasksByUser("User2", users);
-        System.out.println("To-Do List for User2");
-        user2List.traverseToDoList();
+        user1TaskList.createToDoList("Task 1", false, "User1", users);
+        user1TaskList.insertNewTask("Task 2", true, 1, "User1", users);
+        user1TaskList.traverseToDoList();
 
 
-        System.out.println("To-Do List for User2");
-        user2List.traverseToDoList();
-        taskList.traverseToDoList();
+        TaskList user2TaskList = users.getUserTaskList("User2");
+
+        user2TaskList.createToDoList("buy milk", false, "User2", users);
+        user2TaskList.insertNewTask("call bank", false, 1, "User2", users);
+        user2TaskList.insertNewTask("call school", true, 2, "User2", users);
+        user2TaskList.insertNewTask("go to the dump", false, 3, "User2", users);
+        user2TaskList.insertNewTask("visit dentist", false, 4, "User2", users);
+        user2TaskList.traverseToDoList();
+
+        user2TaskList.changeTaskStatus("go to the dump", true);
+        user2TaskList.traverseToDoList();
 
 
     }
