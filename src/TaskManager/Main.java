@@ -13,7 +13,6 @@ public class Main {
         System.out.println("User array:");
         users.traverseUsers();
         System.out.println();
-
         //create a task list(single dimension linked list) for User1
         TaskList user1TaskList = users.getUserTaskList("User1");
 
